@@ -1,0 +1,54 @@
+# 3. Write a python program using object oriented programming to demonstrate encapsulation, overloading / Overriding and inheritance.
+
+class Student():
+    # __init__ is known as the constructor 
+
+    def __init__(self, name, USN):         
+        self.name = name
+        self.usn = USN
+        # self.__aadhar = aadhar --can not be accessed in the subclass 
+
+    def display(self):
+        print("***Student Object***")
+        print(self.name)
+        print(self.usn)
+
+        # To illustrate Overloading/Overriding
+
+    def greeting(self, name=None):
+        if name is not None:
+            print("Welcome" + name)
+        else:
+            print("Welcome")
+
+# Inheritance - to create a subclass
+class PGStudent(Student):
+    def __init__(self, name, USN, branch):
+        self.name = name     # Super can be used here
+        self.usn = USN
+        #specific to PG student
+        self.branch = branch
+
+    def display(self):
+        print("***PG Student Object***")
+        print(self.name) # parent
+        print(self.usn)  # parent
+        print(self.branch)   # child
+
+# creation of a Student (Parent class) class object - with name and USN     
+Stu= Student("Messsi","1BI20CS012")
+Stu.display()   # parent class display
+# creation of a PGStudent (Sub class) class object   
+PGStu = PGStudent("Mbappe","1BI20MC08","MCA") 
+PGStu.display() # child class display
+
+
+
+#output
+#***Student Object***
+#Messsi
+#1BI20CS012
+#***PG Student Object***
+#Mbappe
+#1BI20MC08
+#MCA
